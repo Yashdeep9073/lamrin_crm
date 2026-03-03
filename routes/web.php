@@ -14,8 +14,13 @@
 // Web Routes
 Route::middleware(['XSS'])->namespace('Web')->group(function () {
 
-    // Home Route
-    Route::get('/', 'HomeController@index')->name('home');
+    // Home Route redirec to admin/login
+    Route::get('/', function () {
+        return redirect()->route('login');
+    });
+    // Route::get('/', 'HomeController@index')->name('home');
+
+
     // Course Route
     Route::get('/course', 'CourseController@index')->name('course');
     Route::get('/course/{slug}', 'CourseController@show')->name('course.single');
